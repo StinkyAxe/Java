@@ -1,0 +1,38 @@
+// https://practice.geeksforgeeks.org/problems/rotate-a-2d-array-without-using-extra-space/0
+class GFG {
+	public static void main (String[] args) throws IOException{
+		//code
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		int test=Integer.parseInt(br.readLine().trim());
+		while(test-->0)
+		{
+		    
+		    int n=Integer.parseInt(br.readLine());
+		    String st[]=br.readLine().trim().split("\\s+");
+		    int a[][]=new int[n][n];
+		    int k=0;
+		    for(int i=0;i<n;i++)
+		    {
+		        for(int j=0;j<n;j++)
+		            a[i][j]=Integer.parseInt(st[k++]);
+		    }
+		    for(int i=0;i<n/2;i++)
+		    {
+		        for(int j=i;j<(n-i-1);j++)
+		        {
+		            int temp=a[i][j];
+		            a[i][j]=a[n-j-1][i];
+		            a[n-j-1][i]=a[n-1-i][n-1-j];
+		            a[n-1-i][n-1-j]=a[j][n-1-i];
+		            a[j][n-1-i]=temp;
+		        }
+		    }
+		    for(int i=0;i<n;i++)
+		    {
+		        for(int j=0;j<n;j++)
+		            System.out.print(a[i][j]+" ");
+		    }
+		    System.out.println();
+		}
+	}
+}
